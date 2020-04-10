@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RecipesRoutingModule } from './recipes-routing.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
     declarations: [
@@ -23,9 +24,10 @@ import { RecipesRoutingModule } from './recipes-routing.module';
         // Anything that is used in the template (components, directives, pipes) needs to be declared in the module
         // Services only need to be declared in the app module
         RouterModule,
-        CommonModule, // Use this one instead of browserModule
+        //CommonModule, // Use this one instead of browserModule
         ReactiveFormsModule,
-        RecipesRoutingModule
+        RecipesRoutingModule,
+        SharedModule
     ],
     // We do not need to explicitly export all of these modules since we are loading them through the routing module
     // exports: [
@@ -37,6 +39,4 @@ import { RecipesRoutingModule } from './recipes-routing.module';
     //     RecipeEditComponent,
     // ],
 })
-export class RecipesModule {
-
-}
+export class RecipesModule {}

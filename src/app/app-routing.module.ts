@@ -1,17 +1,28 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { ShoppingListComponent } from './shopping-list/shopping-list.component';
-import { AuthComponent } from './auth/auth.component';
-
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/recipes', pathMatch: 'full'},
-  { path: 'shopping-list', component: ShoppingListComponent },
-  { path: 'auth', component: AuthComponent }
+  { 
+    path: 'recipes', 
+    loadChildren: () => import('./recipes/recipes.module').then(m => m.RecipesModule) 
+  },
+  { 
+    path: 'shopping-list', 
+    loadChildren: () => import('./shopping-list/shopping-list.module').then(m => m.ShoppingListModule) 
+  },
+  { 
+    path: 'auth', 
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) 
+  }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(appRoutes)],
+  imports: [
+    // The preload strategy basically says that once you hit one of the lazy loaded paths, load the other ones
+    // This could be set up to load specific components when you get to a specific component
+    RouterModule.forRoot(appRoutes, {preloadingStrategy: PreloadAllModules})
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
