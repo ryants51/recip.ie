@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Ingredient } from '../shared/ingredient.model';
 
+// THIS SERVICE IS NO LONGER IN USE
+// IT HAS BEEN REPLACED BY THE REDUCER
+
 @Injectable({providedIn: 'root'})
 export class ShoppingListService {
     ingredientsChanged = new Subject<Ingredient[]>();
