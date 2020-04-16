@@ -2,10 +2,6 @@ import { Ingredient } from '../../shared/ingredient.model';
 import { Action } from '@ngrx/store';
 import * as ShoppingListActions from './shopping-list.actions';
 
-export interface AppState {
-    shoppingList: State;
-}
-
 export interface State {
     ingredients: Ingredient[];
     editedIngredient: Ingredient;
@@ -29,14 +25,12 @@ export function shoppingListReducer(state: State = initialState, action: Shoppin
                 ...state,
                 ingredients: [...state.ingredients, action.payload]
             };
-            break;
         case ShoppingListActions.ADD_INGREDIENTS:
             return {
                 // Pulls out all of the data from the state and adds it to the object
                 ...state,
                 ingredients: [...state.ingredients, ...action.payload]
             };
-            break;
         case ShoppingListActions.UPDATE_INGREDIENT:
             const ingredient = state.ingredients[state.editedIngredientIndex];
             const updatedIngredient = {
@@ -52,7 +46,6 @@ export function shoppingListReducer(state: State = initialState, action: Shoppin
                 editedIngredientIndex: -1,
                 editedIngredient: null
             };
-            break;
         case ShoppingListActions.DELETE_INGREDIENT:
             return {
                 // Pulls out all of the data from the state and adds it to the object
@@ -63,7 +56,6 @@ export function shoppingListReducer(state: State = initialState, action: Shoppin
                 editedIngredientIndex: -1,
                 editedIngredient: null
             };
-            break;
         case ShoppingListActions.START_EDIT:
             return {
                 // Pulls out all of the data from the state and adds it to the object
@@ -71,15 +63,13 @@ export function shoppingListReducer(state: State = initialState, action: Shoppin
                 editedIngredientIndex: action.payload,
                 editedIngredient: {...state.ingredients[action.payload]}
             };
-            break;
         case ShoppingListActions.STOP_EDIT:
             return {
                 // Pulls out all of the data from the state and adds it to the object
                 ...state,
                 editedIngredientIndex: -1,
                 editedIngredient: null
-            };
-            break;
+            }
         default: 
             return state;
             break;
