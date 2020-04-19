@@ -23,6 +23,10 @@ const appRoutes: Routes = [
     // This could be set up to load specific components when you get to a specific component
     // The preload strategy basically says that once you hit one of the lazy loaded paths, load the other ones
 // This could be set up to load specific components when you get to a specific component
+// The preload strategy basically says that once you hit one of the lazy loaded paths, load the other ones
+// This could be set up to load specific components when you get to a specific component
+// The preload strategy basically says that once you hit one of the lazy loaded paths, load the other ones
+// This could be set up to load specific components when you get to a specific component
 RouterModule.forRoot(appRoutes, { preloadingStrategy: PreloadAllModules, initialNavigation: 'enabled' })
   ],
   exports: [RouterModule]
