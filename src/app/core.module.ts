@@ -6,10 +6,10 @@ import { LoggingService } from './logging.service';
 
 @NgModule({
     providers: [
-        ShoppingListService, 
+        ShoppingListService,
         { // We HAVE to do it this way for interceptors. There is no other way.
-            provide: HTTP_INTERCEPTORS, 
-            useClass: AuthInterceptorService, 
+            provide: HTTP_INTERCEPTORS,
+            useClass: AuthInterceptorService,
             multi: true
         }
     ]
